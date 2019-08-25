@@ -16,7 +16,7 @@ def main(args):
     """ Main entry point of the app """
     # Test with pretrained model
     if args.test:
-        from tests.test import Test
+        from src.test import Test
         Test().test()
 
     # Train new model
