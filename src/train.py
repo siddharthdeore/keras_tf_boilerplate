@@ -28,7 +28,7 @@ class Train(object):
 
         input_dim = x_train.shape[1]
         output_dim = y_train.shape[1]
-        mdl = Model().create_model(input_dim, [8,16,32,16,8], output_dim)
+        mdl = Model().create_model(input_dim, [8,256,256,256,8], output_dim)
         mdl.summary()
         
         # Optimizer
@@ -42,7 +42,7 @@ class Train(object):
         o = optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
         o = optimizers.Adagrad(lr=0.01, epsilon=None, decay=0.0)
         '''
-        loss_func='cosine_proximity'
+        loss_func='mean_squared_error'
         ''' Possible loss functions
             'mean_squared_error' , 'mean_absolute_error' , 'mean_absolute_percentage_error' ,
             'mean_squared_logarithmic_error' , 'squared_hinge' , 'hinge' , 'categorical_hinge' ,
@@ -59,11 +59,12 @@ class Train(object):
         
         history = mdl.fit(  x_train,
                             y_train,
-                            batch_size=64,  # Number of samples per gradient update
-                            epochs=200,     # Number of epochs to train the model
-                            verbose=1,      #  0 = silent, 1 = progress bar, 2 = one line per epoch.
+                            batch_size=256,  # Number of samples per gradient update
+                            epochs=1000,     # Number of epochs to train the model
+                            verbose=2,      #  0 = silent, 1 = progress bar, 2 = one line per epoch.
                             validation_data=(x_test, y_test),
-                            callbacks=[checkpoint])
+                            callbacks=None)
+                            #callbacks=[checkpoint])
         # Test model
         score = mdl.evaluate(x_test, y_test, verbose=0)
         print('Test loss:', score[0])

@@ -20,7 +20,7 @@ def main(args):
     if args.test:
         from src.test import Test
 
-        dataset_pred = np.loadtxt(absolute_file_path('../datasets/pred_2dof.csv'), delimiter=",")
+        dataset_pred = np.loadtxt(absolute_file_path('../datasets/pred1.csv'), delimiter=",")
         x_predict=dataset_pred[:,:2]
         y_predict=dataset_pred[:,2:]
 
@@ -33,13 +33,15 @@ def main(args):
         print('Loading datasets')
         # load training dataset
         dataset_train = np.loadtxt(absolute_file_path('../datasets/train_2dof.csv'), delimiter=",")
-        x_train=dataset_train[:,:2] # (input vector) first two columns are end effector states
-        y_train=dataset_train[:,2:] # (output vector) second and third columns are joint angles
+        x_train=dataset_train[:1000,:2] # (input vector) first two columns are end effector states
+        y_train=dataset_train[:1000,2:] # (output vector) second and third columns are joint angles
         print(x_train.shape)
         # load test dataset
         dataset_test = np.loadtxt(absolute_file_path('../datasets/test_2dof.csv'), delimiter=",")
-        x_test=dataset_test[:,:2]
-        y_test=dataset_test[:,2:]
+        x_test=dataset_train[200:300,:2]
+        y_test=dataset_train[200:300,2:]
+        #x_test=dataset_test[:,:2]
+        #y_test=dataset_test[:,2:]
 
         Train().train(x_train,y_train,x_test,y_test)
     

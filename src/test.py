@@ -25,9 +25,11 @@ class Test:
         model.summary()
 
         solution=model.predict(x_predict,verbose=2)
+        print(solution)
+        print(y_predict)
 
-        plt.plot(solution[:,0],y_predict[:,0],'ro')
+        #plt.plot(solution[:,0],y_predict[:,0],'ro')
         #plt.plot(y_predict[:,0],y_predict[:,1],'bo')
-        plt.show()
+        #plt.show()
 
         del model  # deletes the existing model
