@@ -1,2 +1,2 @@
-# keras_tf_boilerplate
-Yet another tensorflow keras boilerplate template
+# Keras Boilerplate
+Yet another Boilerplate template for Neural network projects using Tensorflow and keras 
