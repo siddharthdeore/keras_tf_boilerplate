@@ -3,7 +3,7 @@ from keras.layers import Dense
 
 class Model(object):
 
-    def create_model(input_layer_dim=2,hidden_units=[32,64,64,32],output_layer_dim=2):
+    def create_model(self,input_layer_dim=2,hidden_units=[32,64,64,32],output_layer_dim=2):
         """
         Arguments
         ---------
